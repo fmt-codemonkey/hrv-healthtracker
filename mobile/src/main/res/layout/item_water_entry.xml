@@ -1,25 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:background="#1A1A1A">
+    android:layout_marginBottom="@dimen/hydration_margin_bottom"
+    android:layout_marginLeft="@dimen/hydration_margin_side"
+    android:layout_marginRight="@dimen/hydration_margin_side"
+    app:cardCornerRadius="@dimen/hydration_card_radius"
+    app:cardElevation="@dimen/hydration_card_elevation"
+    android:backgroundTint="@color/hydration_card_background">
 
-    <TextView
-        android:id="@+id/water_amount"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="250 ml"
-        android:textColor="#00BFFF"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:padding="@dimen/hydration_inner_padding"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/water_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="9:45 PM"
-        android:textColor="#AAAAAA"
-        android:textSize="14sp" />
-</LinearLayout>
+        <!-- Left side: water info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/water_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_250_ml"
+                android:textColor="@color/hydration_accent"
+                android:textSize="@dimen/hydration_text_main"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/water_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_9_45_pm"
+                android:textColor="@color/hydration_hint"
+                android:textSize="@dimen/hydration_text_small"
+                android:layout_marginTop="@dimen/hydration_time_margin_top" />
+        </LinearLayout>
+
+        <!-- Right side: emoji -->
+        <TextView
+            android:id="@+id/water_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drop"
+            android:textSize="@dimen/hydration_emoji_size" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

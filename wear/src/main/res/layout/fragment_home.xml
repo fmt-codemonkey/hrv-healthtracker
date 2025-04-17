@@ -3,8 +3,8 @@
     android:id="@+id/home_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:padding="12dp">
+    android:background="@color/background_dark"
+    android:padding="@dimen/home_outer_padding">
 
     <LinearLayout
         android:id="@+id/home_container"
@@ -18,20 +18,20 @@
             android:id="@+id/hrv_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="😌"
-            android:textSize="64sp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="4dp" />
+            android:text="@string/smile_i"
+            android:textSize="@dimen/home_emoji_size"
+            android:layout_marginTop="@dimen/space_medium"
+            android:layout_marginBottom="@dimen/space_small" />
 
         <TextView
             android:id="@+id/stress_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Relaxed"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:text="@string/relaxed"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_medium"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="@dimen/space_large" />
 
         <!-- HRV and RHR container -->
         <LinearLayout
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="@dimen/space_large"
             android:weightSum="2">
 
             <!-- HRV -->
@@ -54,18 +54,18 @@
                     android:id="@+id/hrv_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="--"
-                    android:textSize="28sp"
-                    android:textColor="#00FFAA"
+                    android:text="@string/dashed_double"
+                    android:textSize="@dimen/text_large"
+                    android:textColor="@color/accent_green"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/hrv_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="HRV (ms)"
-                    android:textColor="#AAAAAA"
-                    android:textSize="14sp" />
+                    android:text="@string/hrv_ms"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_small" />
             </LinearLayout>
 
             <!-- RHR -->
@@ -80,34 +80,35 @@
                     android:id="@+id/rhr_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="--"
-                    android:textSize="28sp"
-                    android:textColor="#FFA07A"
+                    android:text="@string/dashed_double"
+                    android:textSize="@dimen/text_large"
+                    android:textColor="@color/accent_orange"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/rhr_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RHR (bpm)"
-                    android:textColor="#AAAAAA"
-                    android:textSize="14sp" />
+                    android:text="@string/rhr_bpm"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_small" />
             </LinearLayout>
         </LinearLayout>
 
         <!-- Navigate to ActionsFragment -->
         <Button
             android:id="@+id/btn_actions"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Activity"
-            android:backgroundTint="#444444"
-            android:textColor="#FFFFFF"
-            android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_gravity="center_horizontal"/>
-
-
-
+            android:text="@string/view_activity"
+            android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
+            android:backgroundTint="@color/accent_blue"
+            android:textColor="@color/text_primary"
+            android:layout_marginTop="@dimen/space_small"
+            android:layout_marginBottom="@dimen/space_medium"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:elevation="6dp" />
     </LinearLayout>
 </ScrollView>

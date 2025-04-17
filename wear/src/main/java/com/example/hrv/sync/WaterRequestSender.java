@@ -15,7 +15,7 @@ import java.util.List;
 public class WaterRequestSender {
 
     private static final String TAG = "WaterRequestSender";
-    private static final String PATH = "/water_sync"; // can be anything
+    private static final String PATH = "/water_sync";
 
     public static void sendWaterToPhone(Context context, int waterAmount) {
         new Thread(() -> {

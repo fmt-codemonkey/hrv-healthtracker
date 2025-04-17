@@ -23,10 +23,10 @@ public class HydrationHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        // Enable back arrow in action bar
+        // Enable back arrow in action bar with localized title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Hydration History");
+            getSupportActionBar().setTitle(R.string.title_history_hydration);
         }
 
         hydrationRecycler = findViewById(R.id.hydration_recycler);
@@ -40,8 +40,7 @@ public class HydrationHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        finish(); // closes the activity
+        finish();
         return true;
     }
-
 }

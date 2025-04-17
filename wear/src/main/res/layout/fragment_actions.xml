@@ -1,102 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/actions_scroll"
+<androidx.wear.widget.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/actions_box_inset"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    android:padding="12dp">
+    android:background="@color/background_dark"
+    android:padding="@dimen/wear_screen_padding"
+    android:fitsSystemWindows="true">
 
-    <LinearLayout
-        android:id="@+id/actions_container"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:boxedEdges="all">
 
-        <!-- Step Count Label -->
-        <TextView
-            android:id="@+id/step_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Today's Steps"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="12dp" />
-
-        <!-- Step Count Value -->
-        <TextView
-            android:id="@+id/step_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            android:textColor="#00FFAA"
-            android:layout_marginBottom="20dp" />
-
-        <!-- Streak Calendar Bar -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendar_recycler"
+        <LinearLayout
+            android:id="@+id/actions_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:overScrollMode="never" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/space_medium"
+            android:paddingBottom="@dimen/space_large"
+            android:clipToPadding="false">
 
-        <!-- Water Intake Label -->
-        <TextView
-            android:id="@+id/water_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Today's Water"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="8dp" />
+            <!-- Step Label -->
+            <TextView
+                android:id="@+id/step_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_s_steps"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/space_medium" />
 
-        <!-- Water Intake Value -->
-        <TextView
-            android:id="@+id/water_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 ml"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:textColor="#00BFFF"
-            android:layout_marginBottom="12dp" />
+            <!-- Step Value -->
+            <TextView
+                android:id="@+id/step_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0"
+                android:textSize="@dimen/text_xlarge"
+                android:textStyle="bold"
+                android:textColor="@color/accent_green"
+                android:layout_marginBottom="@dimen/space_large" />
 
-        <ProgressBar
-            android:id="@+id/water_progress"
-            style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
-            android:layout_width="200dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="10dp"
-            android:progressDrawable="@drawable/progress_water_ring"
-            android:max="2000"
-            android:progress="0"
-            android:layout_gravity="center_horizontal"/>
+            <!-- Calendar -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/calendar_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_large"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:overScrollMode="never" />
 
-        <TextView
-            android:id="@+id/water_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0%"
-            android:textSize="14sp"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="8dp" />
+            <!-- Water Label -->
+            <TextView
+                android:id="@+id/water_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_s_water"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="@dimen/space_small" />
 
+            <!-- Water Value -->
+            <TextView
+                android:id="@+id/water_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0_ml"
+                android:textSize="@dimen/text_large"
+                android:textStyle="bold"
+                android:textColor="@color/accent_blue"
+                android:layout_marginBottom="@dimen/space_small" />
 
-        <!-- Add Water Button -->
-        <Button
-            android:id="@+id/btn_add_water"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+250 ml"
-            android:layout_gravity="center_horizontal"
-            android:backgroundTint="#0055FF"
-            android:textColor="@android:color/white"
-            android:padding="8dp"
-            android:layout_marginBottom="20dp" />
+            <!-- Progress -->
+            <ProgressBar
+                android:id="@+id/water_progress"
+                style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+                android:layout_width="@dimen/progress_width"
+                android:layout_height="@dimen/progress_height"
+                android:layout_marginBottom="@dimen/space_small"
+                android:progressDrawable="@drawable/progress_water_ring"
+                android:max="2000"
+                android:progress="0"
+                android:layout_gravity="center_horizontal" />
 
+            <TextView
+                android:id="@+id/water_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0_percent"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/text_primary"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/space_small" />
 
-    </LinearLayout>
-</ScrollView>
+            <!-- Add Water Button -->
+            <Button
+                android:id="@+id/btn_add_water"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_250_ml"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/button_primary"
+                android:textColor="@color/text_primary"
+                android:padding="@dimen/button_padding"
+                android:layout_marginBottom="@dimen/space_xlarge"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.wear.widget.BoxInsetLayout>

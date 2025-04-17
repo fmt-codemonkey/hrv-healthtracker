@@ -16,13 +16,13 @@ public class StepSensorManager implements SensorEventListener {
     private final SensorManager sensorManager;
     private final Sensor stepSensor;
     private final MutableLiveData<Integer> stepLiveData = new MutableLiveData<>(0);
-    private final Context context; // ✅ Store context here
+    private final Context context;
 
     private boolean isDebugEmulator = android.os.Build.FINGERPRINT.contains("generic");
 
 
     public StepSensorManager(Context context) {
-        this.context = context.getApplicationContext(); // ✅ fix this
+        this.context = context.getApplicationContext();
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
     }

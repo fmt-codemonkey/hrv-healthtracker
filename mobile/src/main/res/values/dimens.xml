@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="header_margin_bottom">16dp</dimen>
+    <dimen name="header_emoji_size">32sp</dimen>
+    <dimen name="header_title_size">22sp</dimen>
+    <dimen name="emoji_margin_end">8dp</dimen>
+    <dimen name="recycler_padding_bottom">8dp</dimen>
+
+    <dimen name="outer_padding">24dp</dimen>
+    <dimen name="inner_padding">16dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_height">180dp</dimen>
+    <dimen name="button_padding">12dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_tiny">14sp</dimen>
+    <dimen name="text_small">16sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_large">28sp</dimen>
+    <dimen name="text_xlarge">32sp</dimen>
+
+    <!-- Emoji Sizes -->
+    <dimen name="emoji_size_small">32sp</dimen>
+    <dimen name="emoji_size_large">120sp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="space_tiny">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_large">24dp</dimen>
+    <dimen name="streak_dot_size">36dp</dimen>
+    <dimen name="streak_dot_margin">4dp</dimen>
+
+
+    <dimen name="hydration_margin_bottom">12dp</dimen>
+    <dimen name="hydration_margin_side">4dp</dimen>
+    <dimen name="hydration_inner_padding">16dp</dimen>
+
+    <dimen name="hydration_text_main">20sp</dimen>
+    <dimen name="hydration_text_small">14sp</dimen>
+    <dimen name="hydration_emoji_size">28sp</dimen>
+    <dimen name="hydration_time_margin_top">4dp</dimen>
+
+    <dimen name="hydration_card_radius">16dp</dimen>
+    <dimen name="hydration_card_elevation">6dp</dimen>
+</resources>
+

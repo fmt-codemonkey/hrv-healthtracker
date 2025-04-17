@@ -1,0 +1,4 @@
+<resources>
+    <integer name="water_goal_ml">3500</integer>
+    <integer name="add_water_step">250</integer>
+</resources>

@@ -37,7 +37,7 @@ public class HydrationChartActivity extends AppCompatActivity {
         // Action bar back button and title
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Hydration Trend");
+            getSupportActionBar().setTitle(R.string.title_chart_hydration);
         }
 
         chart = findViewById(R.id.hydration_chart);
@@ -50,9 +50,9 @@ public class HydrationChartActivity extends AppCompatActivity {
         chart.getAxisRight().setEnabled(false);
         chart.getLegend().setEnabled(false);
 
-        // Description below chart
+        // Chart description
         Description desc = new Description();
-        desc.setText("Cumulative hydration over time");
+        desc.setText(getString(R.string.chart_description_hydration));
         desc.setTextColor(getColor(R.color.text_secondary));
         desc.setTextSize(12f);
         chart.setDescription(desc);
@@ -61,8 +61,9 @@ public class HydrationChartActivity extends AppCompatActivity {
         chart.getXAxis().setGranularity(1f);
         chart.animateX(1000);
 
-        // Add horizontal goal line at 3000ml
-        LimitLine goalLine = new LimitLine(HYDRATION_GOAL, "Goal: 3000 ml");
+        // Goal line
+        String goalText = getString(R.string.chart_goal_label, HYDRATION_GOAL);
+        LimitLine goalLine = new LimitLine(HYDRATION_GOAL, goalText);
         goalLine.setLineColor(getColor(R.color.teal_700));
         goalLine.setLineWidth(2f);
         goalLine.setTextColor(getColor(R.color.teal_700));
@@ -91,15 +92,14 @@ public class HydrationChartActivity extends AppCompatActivity {
                 i++;
             }
 
-            // Show toast if goal is reached
             if (total[0] >= HYDRATION_GOAL) {
+                String toastText = getString(R.string.toast_goal_reached, total[0]);
                 runOnUiThread(() ->
-                        Toast.makeText(this, "🎉 Goal Reached: " + total[0] + " ml!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, toastText, Toast.LENGTH_LONG).show()
                 );
             }
 
-            // Create data set
-            LineDataSet dataSet = new LineDataSet(chartPoints, "Hydration Progress");
+            LineDataSet dataSet = new LineDataSet(chartPoints, getString(R.string.chart_dataset_label));
             dataSet.setColor(getColor(R.color.chart_line));
             dataSet.setCircleColor(getColor(R.color.chart_circle));
             dataSet.setDrawValues(true);
@@ -110,7 +110,6 @@ public class HydrationChartActivity extends AppCompatActivity {
 
             LineData lineData = new LineData(dataSet);
 
-            // Set chart data and x-axis labels
             runOnUiThread(() -> {
                 chart.setData(lineData);
                 chart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(timeLabels));
@@ -120,7 +119,6 @@ public class HydrationChartActivity extends AppCompatActivity {
         });
     }
 
-    // Handle back arrow
     @Override
     public boolean onSupportNavigateUp() {
         finish();

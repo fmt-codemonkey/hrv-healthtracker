@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.hrv.R;
 import com.example.hrv.databinding.FragmentActionsBinding;
 import com.example.hrv.viewmodel.StepViewModel;
 import com.example.hrv.viewmodel.WaterViewModel;
@@ -23,7 +24,8 @@ public class ActionsFragment extends Fragment {
     private WaterViewModel waterViewModel;
     private StepStreakAdapter adapter;
 
-    private final int GOAL_ML = 3500;
+    private int goalMl;
+    private int addWaterAmount;
 
     public ActionsFragment() {}
 
@@ -36,6 +38,10 @@ public class ActionsFragment extends Fragment {
         stepViewModel = new ViewModelProvider(requireActivity()).get(StepViewModel.class);
         waterViewModel = new ViewModelProvider(requireActivity()).get(WaterViewModel.class);
 
+        // Load resource values
+        goalMl = getResources().getInteger(R.integer.water_goal_ml);
+        addWaterAmount = getResources().getInteger(R.integer.add_water_step);
+
         // RecyclerView for streaks
         adapter = new StepStreakAdapter();
         binding.calendarRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -46,28 +52,27 @@ public class ActionsFragment extends Fragment {
             binding.stepValue.setText(String.valueOf(steps));
         });
 
-        // Streak Dots (Step + Water Combined)
+        // Streaks
         stepViewModel.getStreakList().observe(getViewLifecycleOwner(), this::combineStreaks);
         waterViewModel.getStreakList().observe(getViewLifecycleOwner(), this::combineStreaks);
 
         // Water Intake Observer
         waterViewModel.getWaterIntake().observe(getViewLifecycleOwner(), amount -> {
-            binding.waterValue.setText(amount + " ml");
+            String mlUnit = getString(R.string.unit_ml_suffix, amount);
+            binding.waterValue.setText(mlUnit);
 
-            // Set ProgressBar max & current value
-            binding.waterProgress.setMax(GOAL_ML);
+            // Progress bar
+            binding.waterProgress.setMax(goalMl);
             binding.waterProgress.setProgress(amount);
 
-            // Update % below progress bar
-            int percent = (int) ((amount / (float) GOAL_ML) * 100);
-            binding.waterPercent.setText(percent + "%");
+            int percent = (int) ((amount / (float) goalMl) * 100);
+            binding.waterPercent.setText(getString(R.string.unit_percent_suffix, percent));
         });
 
-        // +250ml Water Button
+        // Add water button
         binding.btnAddWater.setOnClickListener(v -> {
-            waterViewModel.addWater(250);
+            waterViewModel.addWater(addWaterAmount);
 
-            // Send updated water value to phone
             int currentWater = waterViewModel.getWaterIntake().getValue() != null
                     ? waterViewModel.getWaterIntake().getValue()
                     : 0;
@@ -75,11 +80,10 @@ public class ActionsFragment extends Fragment {
             com.example.hrv.sync.WaterRequestSender.sendWaterToPhone(requireContext(), currentWater);
         });
 
-
         return binding.getRoot();
     }
 
-    // Combine step + water streaks (7-day hydration+step streak logic)
+    // Combine step + water streaks (7-day logic)
     private void combineStreaks(List<Boolean> _unused) {
         List<Boolean> steps = stepViewModel.getStreakList().getValue();
         List<Boolean> water = waterViewModel.getStreakList().getValue();
@@ -87,7 +91,7 @@ public class ActionsFragment extends Fragment {
         if (steps != null && water != null && steps.size() == 7 && water.size() == 7) {
             List<Boolean> combined = new java.util.ArrayList<>();
             for (int i = 0; i < 7; i++) {
-                combined.add(steps.get(i) && water.get(i)); // ✅ both completed
+                combined.add(steps.get(i) && water.get(i));
             }
             adapter.setData(combined);
         }

@@ -8,19 +8,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
+
 import com.example.hrv.R;
 import com.example.hrv.ui.fragments.HomeFragment;
 
 public class MainActivity extends FragmentActivity {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Check BODY_SENSORS permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.BODY_SENSORS) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.BODY_SENSORS}, 101);
@@ -33,8 +32,6 @@ public class MainActivity extends FragmentActivity {
                     .replace(R.id.nav_host_fragment, new HomeFragment())
                     .commit();
         }
-
-
     }
 
     @Override
@@ -42,13 +39,11 @@ public class MainActivity extends FragmentActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 101) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.d("Permission", "BODY_SENSORS permission granted ✅");
-                // Optionally re-init your sensor manager here
+                Log.d("Permission", getString(R.string.log_sensor_permission_granted));
             } else {
-                Log.e("Permission", "BODY_SENSORS permission denied ❌");
-                Toast.makeText(this, "Heart rate access denied", Toast.LENGTH_SHORT).show();
+                Log.e("Permission", getString(R.string.log_sensor_permission_denied));
+                Toast.makeText(this, getString(R.string.toast_sensor_denied), Toast.LENGTH_SHORT).show();
             }
         }
     }
-
 }

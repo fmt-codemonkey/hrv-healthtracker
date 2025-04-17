@@ -1,103 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="#121212"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:background="@color/surface_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="@dimen/outer_padding"
         android:gravity="center_horizontal">
 
-        <!-- HRV Section -->
-        <TextView
-            android:id="@+id/hrv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="HRV Status"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/holo_orange_dark"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/hrv_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-- ms"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:textColor="#00BFFF"
-            android:layout_marginBottom="4dp" />
-
+        <!-- Big Emoji Header -->
         <TextView
             android:id="@+id/hrv_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🤔"
-            android:textSize="40sp"
-            android:layout_marginBottom="4dp" />
+            android:text="@string/why"
+            android:textSize="@dimen/emoji_size_large"
+            android:layout_marginTop="@dimen/space_large"
+            android:layout_marginBottom="@dimen/space_small"
+            android:textAlignment="center" />
 
+        <!-- Daily Score Label -->
         <TextView
-            android:id="@+id/stress_label"
+            android:id="@+id/daily_score_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insufficient Data"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:layout_marginBottom="24dp" />
+            android:text="@string/hi_here_s_your_daily_score"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/text_hint"
+            android:layout_marginBottom="@dimen/space_tiny" />
 
-        <!-- Water Section -->
+        <!-- Stress Status -->
         <TextView
-            android:id="@+id/water_title"
+            android:id="@+id/stress_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Water Intake from Watch"
-            android:textSize="18sp"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:id="@+id/water_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-- ml"
-            android:textSize="36sp"
+            android:text="@string/pay_attention"
+            android:textSize="@dimen/text_large"
             android:textStyle="bold"
-            android:textColor="#00BFFF" />
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/space_large" />
 
-        <TextView
-            android:id="@+id/water_total"
-            android:layout_width="wrap_content"
+        <!-- HRV Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Today: -- ml"
-            android:textSize="16sp"
-            android:textColor="#AAAAAA"
-            android:layout_marginTop="12dp"/>
+            app:cardCornerRadius="@dimen/card_radius"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="@dimen/space_large"
+            android:backgroundTint="@color/card_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/inner_padding"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/hrv_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ms"
+                    android:textSize="@dimen/text_xlarge"
+                    android:textColor="@color/accent_blue"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/stress_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/insufficient_data"
+                    android:textColor="@color/accent_orange"
+                    android:textSize="@dimen/text_small"
+                    android:layout_marginBottom="@dimen/space_small" />
+
+                <TextView
+                    android:id="@+id/health_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/take_it_slow_today_your_body_may_need_rest"
+                    android:textSize="@dimen/text_tiny"
+                    android:textColor="@color/text_secondary"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/space_small" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Water & Step Side-by-Side -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/space_large"
+            android:weightSum="2">
+
+            <!-- Water Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/card_height"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="4dp"
+                android:layout_marginEnd="@dimen/space_small"
+                android:backgroundTint="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/inner_padding"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/water_emoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💧"
+                        android:textSize="@dimen/emoji_size_small"
+                        android:layout_marginBottom="@dimen/space_tiny"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/water_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/water"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary_dark" />
+
+                    <TextView
+                        android:id="@+id/water_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ml"
+                        android:textSize="@dimen/text_xlarge"
+                        android:textColor="@color/accent_blue"
+                        android:layout_marginTop="@dimen/space_small" />
+
+                    <TextView
+                        android:id="@+id/water_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/text_tiny"
+                        android:layout_marginTop="@dimen/space_tiny" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Step Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/card_height"
+                android:layout_weight="1"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="4dp"
+                android:layout_marginStart="@dimen/space_small"
+                android:backgroundTint="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/inner_padding"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/step_emoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/walkicon"
+                        android:textSize="@dimen/emoji_size_small"
+                        android:layout_marginBottom="@dimen/space_tiny" />
+
+                    <TextView
+                        android:id="@+id/step_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/steps"
+                        android:textSize="@dimen/text_medium"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary_dark" />
+
+                    <TextView
+                        android:id="@+id/step_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dash"
+                        android:textSize="@dimen/text_xlarge"
+                        android:textColor="@color/accent_green"
+                        android:layout_marginTop="@dimen/space_small" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <!-- Buttons -->
         <Button
             android:id="@+id/btn_view_history"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View History"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#00BFFF"
+            android:text="@string/view_history"
+            android:layout_marginTop="@dimen/space_small"
+            android:backgroundTint="@color/accent_blue"
             android:textColor="@android:color/white"
-            android:padding="8dp" />
+            android:padding="@dimen/button_padding"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginBottom="@dimen/space_small" />
 
         <Button
             android:id="@+id/btn_view_chart"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Chart"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#00BFFF"
-            android:textColor="@android:color/white" />
-
+            android:text="@string/view_chart"
+            android:backgroundTint="@color/accent_blue"
+            android:textColor="@android:color/white"
+            android:padding="@dimen/button_padding"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginBottom="@dimen/space_large" />
     </LinearLayout>
 </ScrollView>

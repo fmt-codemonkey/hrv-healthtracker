@@ -1,3 +1,64 @@
 <resources>
     <string name="app_name">HRV Mobile</string>
+    <string name="hydration_history">Hydration History</string>
+    <string name="walkicon">🚶</string>
+    <string name="ml">-- ml</string>
+    <string name="water">Water</string>
+    <string name="insufficient_data">Insufficient Data</string>
+    <string name="take_it_slow_today_your_body_may_need_rest">Take it slow today. Your body may need rest.</string>
+    <string name="ms">-- ms</string>
+    <string name="pay_attention">Pay Attention</string>
+    <string name="hi_here_s_your_daily_score">Hi, here’s your daily score</string>
+    <string name="why">🤔</string>
+    <string name="total">Total</string>
+    <string name="dash">--</string>
+    <string name="view_history">📊 View History</string>
+    <string name="view_chart">📈 View Chart</string>
+    <string name="steps">Steps</string>
+    <string name="hydration">🧃</string>
+    <string name="hrv_status">HRV Status</string>
+    <string name="streak_dot">Streak dot</string>
+    <string name="_250_ml">250 ml</string>
+    <string name="_9_45_pm">9:45 PM</string>
+    <string name="drop">💧</string>
+
+
+
+    <!-- Water -->
+    <string name="label_water_today">Today: %1$d ml</string>
+    <string name="label_water_amount_format">%1$s ml</string>
+
+    <!-- HRV -->
+    <string name="label_hrv_dash">--</string>
+    <string name="label_hrv_format">%1$d ms</string>
+
+    <!-- Emojis -->
+    <string name="emoji_hrv_confused">🤔</string>
+    <string name="emoji_hrv_stressed">😣</string>
+    <string name="emoji_hrv_neutral">😐</string>
+    <string name="emoji_hrv_relaxed">😌</string>
+    <string name="emoji_hrv_very_relaxed">😴</string>
+
+    <!-- Stress Labels -->
+    <string name="label_stress_insufficient">Insufficient Data</string>
+    <string name="label_stress_stressed">Stressed</string>
+    <string name="label_stress_neutral">Neutral</string>
+    <string name="label_stress_relaxed">Relaxed</string>
+    <string name="label_stress_very_relaxed">Very Relaxed</string>
+
+    <!-- Buttons -->
+    <string name="btn_view_history_label">📊 View History</string>
+    <string name="btn_view_chart_label">📈 View Chart</string>
+
+    <string name="title_chart_hydration">Hydration Trend</string>
+    <string name="chart_description_hydration">Cumulative hydration over time</string>
+    <string name="chart_goal_label">Goal: %1$d ml</string>
+    <string name="chart_dataset_label">Hydration Progress</string>
+    <string name="toast_goal_reached">🎉 Goal Reached: %1$d ml!</string>
+
+    <string name="title_history_hydration">Hydration History</string>
+
+
+
+
 </resources>

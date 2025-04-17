@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="36dp"
-    android:layout_height="36dp"
-    android:layout_margin="4dp">
+    android:layout_width="@dimen/streak_dot_size"
+    android:layout_height="@dimen/streak_dot_size"
+    android:layout_margin="@dimen/streak_dot_margin">
 
     <ImageView
         android:id="@+id/dot_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerInside"
-        android:contentDescription="Streak dot" />
+        android:contentDescription="@string/streak_dot" />
 </FrameLayout>

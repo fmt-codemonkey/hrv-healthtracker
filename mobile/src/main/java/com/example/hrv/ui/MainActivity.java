@@ -37,48 +37,55 @@ public class MainActivity extends AppCompatActivity {
         hrvEmojiView = findViewById(R.id.hrv_emoji);
         stressLabelView = findViewById(R.id.stress_label);
 
-        // Repositories
+        // Repository
         repository = new WaterRepository(this);
         repository.getTodayTotalWater(total ->
-                runOnUiThread(() -> totalTodayText.setText("Today: " + total + " ml")));
+                runOnUiThread(() -> totalTodayText.setText(
+                        getString(R.string.label_water_today, total))));
 
-        // Receivers
+        // Water Receiver
         waterReceiver = new WaterReceiver(this, amount ->
-                runOnUiThread(() -> waterAmountTextView.setText(amount + " ml")));
+                runOnUiThread(() -> waterAmountTextView.setText(
+                        getString(R.string.label_water_amount_format, amount))));
 
+        // HRV Receiver
         hrvReceiver = new HRVReceiver(this, hrv -> {
             Log.d("MainActivity", "💓 HRV received: " + hrv);
             runOnUiThread(() -> {
                 if (hrv < 0 || Double.isNaN(hrv)) {
-                    hrvValueTextView.setText("--");
-                    hrvEmojiView.setText("🤔");
-                    stressLabelView.setText("Insufficient Data");
+                    hrvValueTextView.setText(getString(R.string.label_hrv_dash));
+                    hrvEmojiView.setText(getString(R.string.emoji_hrv_confused));
+                    stressLabelView.setText(getString(R.string.label_stress_insufficient));
                 } else {
-                    hrvValueTextView.setText(String.format("%.0f ms", hrv));
+                    hrvValueTextView.setText(getString(R.string.label_hrv_format, (int) hrv));
+
                     if (hrv < 30) {
-                        hrvEmojiView.setText("😣");
-                        stressLabelView.setText("Stressed");
+                        hrvEmojiView.setText(getString(R.string.emoji_hrv_stressed));
+                        stressLabelView.setText(getString(R.string.label_stress_stressed));
                     } else if (hrv < 60) {
-                        hrvEmojiView.setText("😐");
-                        stressLabelView.setText("Neutral");
+                        hrvEmojiView.setText(getString(R.string.emoji_hrv_neutral));
+                        stressLabelView.setText(getString(R.string.label_stress_neutral));
                     } else if (hrv < 120) {
-                        hrvEmojiView.setText("😌");
-                        stressLabelView.setText("Relaxed");
+                        hrvEmojiView.setText(getString(R.string.emoji_hrv_relaxed));
+                        stressLabelView.setText(getString(R.string.label_stress_relaxed));
                     } else {
-                        hrvEmojiView.setText("😴");
-                        stressLabelView.setText("Very Relaxed");
+                        hrvEmojiView.setText(getString(R.string.emoji_hrv_very_relaxed));
+                        stressLabelView.setText(getString(R.string.label_stress_very_relaxed));
                     }
                 }
             });
         });
 
-        // Register receivers
+        // Register Receivers
         Wearable.getMessageClient(this).addListener(waterReceiver);
         Wearable.getMessageClient(this).addListener(hrvReceiver);
 
         // Buttons
         Button historyBtn = findViewById(R.id.btn_view_history);
         Button chartBtn = findViewById(R.id.btn_view_chart);
+
+        historyBtn.setText(getString(R.string.btn_view_history_label));
+        chartBtn.setText(getString(R.string.btn_view_chart_label));
 
         historyBtn.setOnClickListener(v ->
                 startActivity(new Intent(this, HydrationHistoryActivity.class)));

@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">HRV</string>
+    <string name="_0_ml">0 ml</string>
+    <string name="today_s_water">Today\'s Water</string>
+    <string name="_0">0</string>
+    <string name="today_s_steps">Today\'s Steps</string>
+    <string name="_0_percent">0%</string>
+    <string name="_250_ml">+250 ml</string>
+    <string name="smile_i">😌</string>
+    <string name="relaxed">Relaxed</string>
+    <string name="dashed_double">--</string>
+    <string name="hrv_ms">HRV (ms)</string>
+    <string name="rhr_bpm">RHR (bpm)</string>
+    <string name="view_activity">🚀 View Activity</string>
+    <string name="streak_dot">Streak Dot</string>
+    <!-- Permission Logs & Toasts -->
+    <string name="log_sensor_permission_granted">BODY_SENSORS permission granted ✅</string>
+    <string name="log_sensor_permission_denied">BODY_SENSORS permission denied ❌</string>
+    <string name="toast_sensor_denied">Heart rate access denied</string>
+
+    <string name="unit_ml_suffix">%1$d ml</string>
+    <string name="unit_percent_suffix">%1$d%%</string>
+
+
 </resources>
