@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">HRV Mobile</string>
     <string name="hydration_history">Hydration History</string>
-    <string name="walkicon">🚶</string>
+    <string name="walk_icon">🚶</string>
     <string name="ml">-- ml</string>
     <string name="water">Water</string>
     <string name="insufficient_data">Insufficient Data</string>
@@ -25,7 +25,7 @@
 
 
     <!-- Water -->
-    <string name="label_water_today">Today: %1$d ml</string>
+    <string name="label_water_today_with_goal">Goal: %2$d ml</string>
     <string name="label_water_amount_format">%1$s ml</string>
 
     <!-- HRV -->
@@ -45,6 +45,10 @@
     <string name="label_stress_neutral">Neutral</string>
     <string name="label_stress_relaxed">Relaxed</string>
     <string name="label_stress_very_relaxed">Very Relaxed</string>
+    <string name="goal_streak">🔥🔥 Streak!</string>
+
+
+
 
     <!-- Buttons -->
     <string name="btn_view_history_label">📊 View History</string>
@@ -57,8 +61,9 @@
     <string name="toast_goal_reached">🎉 Goal Reached: %1$d ml!</string>
 
     <string name="title_history_hydration">Hydration History</string>
-
-
+    <string name="set_water_goal">Set Water Goal</string>
+    <string name="goal_ml">Goal: -- ml</string>
+    <string name="goal_completed">🔥 Goal Completed</string>
 
 
 </resources>

@@ -101,10 +101,10 @@
             android:layout_marginBottom="@dimen/space_large"
             android:weightSum="2">
 
-            <!-- Water Card -->
+            <!-- 💧 Water Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
-                android:layout_height="@dimen/card_height"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:cardCornerRadius="@dimen/card_radius"
                 app:cardElevation="4dp"
@@ -113,7 +113,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="@dimen/inner_padding"
                     android:gravity="center">
@@ -149,14 +149,26 @@
                         android:id="@+id/water_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/total"
+                        android:text="@string/goal_ml"
                         android:textColor="@color/text_secondary"
                         android:textSize="@dimen/text_tiny"
                         android:layout_marginTop="@dimen/space_tiny" />
+
+                    <!-- ✅ Goal Completed -->
+                    <TextView
+                        android:id="@+id/water_goal_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/goal_streak"
+                        android:textSize="16sp"
+                        android:textColor="#FF5722"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Step Card -->
+            <!-- 👣 Step Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="@dimen/card_height"
@@ -177,7 +189,7 @@
                         android:id="@+id/step_emoji"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/walkicon"
+                        android:text="@string/walk_icon"
                         android:textSize="@dimen/emoji_size_small"
                         android:layout_marginBottom="@dimen/space_tiny" />
 
@@ -202,7 +214,7 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <!-- Buttons -->
+        <!-- 🔘 Buttons -->
         <Button
             android:id="@+id/btn_view_history"
             android:layout_width="match_parent"
@@ -224,6 +236,16 @@
             android:textColor="@android:color/white"
             android:padding="@dimen/button_padding"
             android:textSize="@dimen/text_medium"
-            android:layout_marginBottom="@dimen/space_large" />
+            android:layout_marginBottom="@dimen/space_small" />
+
+        <Button
+            android:id="@+id/btn_set_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_water_goal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF9800"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </ScrollView>
